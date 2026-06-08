@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+/* Tailwind'de değişken tanmlama (css'teki root ile benzer ama tailwind de theme ile yapıyoruz)*/
+@theme {
+  /* kendi renk tonlarımız */
+  --color-black: #0f0f0f;
+  --color-white: #ffffff;
+  --color-grey: #3f3f3f;
+}
+/* JSX ELEMENTLERİNE (base ile) varsayılan stiller verelim */
+@layer base {
+  button,
+  a {
+    @apply cursor-pointer;
+  }
+  body {
+    @apply bg-black text-white;
+  }
+}
+
+/* Tailwind ile stillendirilmiş KENDİ CLASS (component il) larımızı oluşturabiliriz */
+@layer components {
+  .icon {
+    @apply p-2 hover:bg-zinc-700 transition rounded-full;
+  }
+  .page {
+    @apply h-[calc(100vh-56px)] w-full flex-1 py-6 px-4;
+  }
+
+  /* Global scrollbar styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-black);
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 4px;
+    border: 2px solid var(--color-black);
+  }
+  html, body {
+    scrollbar-color: #555 var(--color-black);
+    scrollbar-width: thin;
+  }
+}
